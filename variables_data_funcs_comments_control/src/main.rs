@@ -1,7 +1,7 @@
 use std::io;
 
 fn main() {
-   let mut values: (u128, u128) = (0, 1);
+   let mut values: [u128; 2] = [0,1];
 
     println!("how high a fib you want?");
 
@@ -18,14 +18,21 @@ fn main() {
     };
     
 
-   loop {
-    let (x, y) = values;
+    loop {
+       let x = values[0];
+       let y = values[1]; 
     if y < fib_top {
-        values = (y, x + y);
-        println!("fib num: {x}")
+        values[0] = y;
+        values[1] = x + y;
+        print_values(values[1]);
     } else {
-        println!("final nums: {x} {y}");
+        print_values(values[0]);
+        print_values(values[1]);
         break;
     }
    }
+}
+
+fn print_values(num: u128) {
+    println!("Fib Num: {num}")
 }
