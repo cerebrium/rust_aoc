@@ -3,33 +3,35 @@ use std::io;
 fn main() {
     println!("Please input a number for fizzBuzz");
 
-    let mut inputForFizz = String::new(); 
+    let mut input_for_fizz = String::new(); 
 
     io::stdin()
-        .read_line(&mut inputForFizz)
+        .read_line(&mut input_for_fizz)
         .expect("Failed to read line");
 
-    let fizzAmount: usize = match inputForFizz.trim().parse() {
+    let fizz_amount: usize = match input_for_fizz.trim().parse() {
         Ok(num) => num,
         Err(_) => panic!("cannot convert input to usize"),
     };
 
-    let fizzBuzzArr = fizzBuzz(fizzAmount);
-    println!("Result: {:?}", fizzBuzzArr);
+    let fizz_buzz_arr = fizz_buzz(fizz_amount);
+    println!("Result: {:?}", fizz_buzz_arr);
     
 }
 
-fn fizzBuzz(n: usize) {
-    let mut result = vec![""; n];
+fn fizz_buzz(n: usize) -> Vec<String> {
+    let mut result = Vec::new();
 
-   for number in 1..n {
+
+   for number in 1..=n {
     // push the vlaue of the fizzBuzzMatcher
     // into the result vector
+    // result[number - 1] = &fizz_buzz_matcher(number);
+    let res = fizz_buzz_matcher(number);
+    result.push(res)
+   }
 
-    result.push(&fizzBuzzMatcher(number));
-   } 
-
-    result;
+   result
 }
 
 /*
@@ -41,16 +43,21 @@ fn fizzBuzz(n: usize) {
 
  */
 
-fn fizzBuzzMatcher(n: usize) -> String {
-    let mut resultantStr = String::new();
+fn fizz_buzz_matcher(n: usize) -> String {
+    let mut resultant_str = String::new();
 
     match n {
-        n if (n%3 == 0) => resultantStr.push_str("fizz"),
-       n if (n%5 == 0) =>  resultantStr.push_str("buzz"), 
-       _ =>  resultantStr.push_str(&n.to_string()),
+        n if (n%3 == 0) => {
+            match n {
+                n if (n%5 == 0) => resultant_str.push_str("fizzbuzz"),
+                _ => resultant_str.push_str("fizz")
+            }
+        },
+       n if (n%5 == 0) =>  resultant_str.push_str("buzz"), 
+       _ =>  resultant_str.push_str(&n.to_string()),
 
     };
 
-    resultantStr
+   resultant_str 
 }
 
