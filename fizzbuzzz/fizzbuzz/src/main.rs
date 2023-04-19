@@ -24,9 +24,8 @@ fn fizz_buzz(n: usize) -> Vec<String> {
 
 
    for number in 1..=n {
-    // push the vlaue of the fizzBuzzMatcher
-    // into the result vector
-    // result[number - 1] = &fizz_buzz_matcher(number);
+    // P ush the vlaue of the fizzBuzzMatcher
+    // Into the result vector
     let res = fizz_buzz_matcher(number);
     result.push(res)
    }
@@ -35,7 +34,7 @@ fn fizz_buzz(n: usize) -> Vec<String> {
 }
 
 /*
-
+    // println!("hello world");
 
     This needs to return a string 
     that was formatted by the rules of
@@ -45,6 +44,8 @@ fn fizz_buzz(n: usize) -> Vec<String> {
 
 fn fizz_buzz_matcher(n: usize) -> String {
     let mut resultant_str = String::new();
+
+
 
     match n {
         n if (n%3 == 0) => {
