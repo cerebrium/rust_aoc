@@ -24,15 +24,15 @@ fn main() {
     if y < fib_top {
         values[0] = y;
         values[1] = x + y;
-        print_values(values[1]);
+        if values[1] < fib_top {
+        print_values(&values[1]);
+        }
     } else {
-        print_values(values[0]);
-        print_values(values[1]);
         break;
     }
    }
 }
 
-fn print_values(num: u128) {
+fn print_values(num: &u128) {
     println!("Fib Num: {num}")
 }
